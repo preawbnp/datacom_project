@@ -27,7 +27,7 @@ class App extends Component {
           </div>
           
           <div className="col-sm-8">
-
+            
           </div>
           </div>
     );
