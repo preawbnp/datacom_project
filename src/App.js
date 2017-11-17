@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -25,10 +23,6 @@ class App extends Component {
               defaultCenter={this.props.center}
               defaultZoom={this.props.zoom}
             >
-            <AnyReactComponent
-              lat={13.7563}
-              lng={100.5018}
-            />
             </GoogleMapReact>
           </div>
           
