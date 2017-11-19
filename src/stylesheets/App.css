@@ -1,10 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow|Open+Sans|Source+Sans+Pro');
+
 body, html { 
-  font-size: 100%; 
+  font-size: 90%; 
   padding: 0px; 
   margin: 0px; 
   height: 100%;
+  width: 100%;  
+  font-family: 'Open Sans', sans-serif;    
 }
 
 .row {
   height: 100%;
+  width: 100%;
+  padding: 0%;
+}
+
+.left-side {
+  padding: 0%;
+}
+
+.right-side {
+  padding: 2%;
+  text-align: center;
+}
+
+.content-layout {
+  text-align: center;
+}
+
+.ip-layout {
+  margin-top: -10px;
+  text-align: center;  
+}
+
+.table-layout {
+  font-size: 90%;  
+  width: 80%; 
+  margin: auto;
+  margin-top: -2%;
+}
+
+.button-layout {
+  text-align: center;  
+}
+
+.table {
+  text-align: left;
+  color: #4a4a4a;
+  border-collapse: collapse !important;
+}
+
+.tr {
+  border-top: 1px solid #ddd;
+}
+
+.tr:first-child {
+  border: none !important;
+}
+
+.search-container {
+  margin: 40px auto;
+  width: 350px;
+  padding-top: 0%;
+}
+
+.search-box {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #f2f2f2;
+  height: 40px;
+  position: relative;
+}
+
+.search-icon {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  width: 32px;
+  height: 40px;
+  color: #999;
+  font-size: 80%;
+  padding: 7px 15px;
+  margin-top: 1%;
+  margin-left: 3%;
+}
+
+.search-input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 300px;
+  height: 40px;
+  float: right;
+  background-color: transparent;
+  border: 0px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;   
+  font-size: 80%;
+  position: relative;
+  outline: 0px;
+}
+
+.btn-submit {
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;     
+  background-color: #D9524F;
 }
