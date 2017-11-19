@@ -1,5 +1,13 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Barlow|Open+Sans|Source+Sans+Pro');
+
+html, body  {
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;  
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
