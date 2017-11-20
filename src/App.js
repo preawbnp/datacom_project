@@ -3,6 +3,7 @@ import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
 import $ from 'jquery';
 import axios from 'axios';
+import home from './home1.png'
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,10 @@ class App extends Component {
 
   render() {
     return (
+      <div>
+        <div>
+          <img src={home} alt="home" className="home" />
+        </div>
         <div className="row">
 
           <div className="col-sm-5 left-side">
@@ -148,6 +153,7 @@ class App extends Component {
             </div>
 
           </div>
+        </div>
         </div>
     );
   }
