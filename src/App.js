@@ -31,6 +31,19 @@ class App extends Component {
     })
   }
 
+  componentWillMount(e) {
+    axios.get('http://ip-api.com/json?callback=')
+    .then((res) => {
+      this.setState({ip: res.data.query})
+      this.setState(res.data)
+      console.log('first success')
+      console.log(res.data)
+    })
+    .catch((res) => {
+      console.log('error with getting data')
+    })
+  }
+
   render() {
     return (
         <div className="row">
