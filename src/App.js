@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
-import $ from 'jquery';
 import axios from 'axios';
 
 const { compose } = require("recompose");
@@ -21,14 +20,13 @@ const MapWithAMarkerWithLabel = compose(
 )(props =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: 13.7563, lng: 100.5018 }
-  }
+    defaultCenter={{ lat: 13.7563, lng: 100.5018 }}
   >
     <MarkerWithLabel
       position={{ lat: 13.7563, lng: 100.5018 }}
       labelAnchor={new google.maps.Point(0,0)}
       labelStyle={{backgroundColor: "black", fontSize: "32px", padding: "16px", color:"white"}}
-    >
+      >
       <div>Beautiful amp</div>
     </MarkerWithLabel>
   </GoogleMap>
