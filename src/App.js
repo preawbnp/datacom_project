@@ -112,7 +112,7 @@ class App extends React.PureComponent {
               <div className="search-container">
                 <div className="search-box">
                   <div className="search-icon"><i className="fa fa-search"></i></div>
-                  <input className="search-input" id="search" type="text" placeholder="Search IP Address ..." onChange={(e) => this.setState({ip: e.target.value})}/>
+                  <input className="search-input" id="search" type="text" placeholder="Search IP Address ..." onChange={(e) => this.setState({ip_number: e.target.value})}/>
                 </div>
               </div>
             </div>
