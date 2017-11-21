@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
-import $ from 'jquery';
 import axios from 'axios';
-import home from './home1.png'
+import home from './h-mock.png'
 
 class App extends Component {
   constructor(props) {
