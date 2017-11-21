@@ -47,8 +47,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div >
+        <div className="bg-home">
           <img src={home} alt="home" className="home" />
         </div>
         <div className="row">
