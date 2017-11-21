@@ -4,35 +4,6 @@ import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 
-const { compose } = require("recompose");
-const {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  map, 
-  marker
-} = require("react-google-maps");
-const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
-
-const MapWithAMarkerWithLabel = compose(
-  withScriptjs,
-  withGoogleMap
-)(props =>
-  <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: 13.7563, lng: 100.5018 }}
-  >
-    <MarkerWithLabel
-      position={{ lat: 13.7563, lng: 100.5018 }}
-      labelAnchor={new google.maps.Point(0,0)}
-      labelStyle={{backgroundColor: "black", fontSize: "32px", padding: "16px", color:"white"}}
-      >
-      <div>Beautiful amp</div>
-    </MarkerWithLabel>
-  </GoogleMap>
-);
-
-
 class App extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -89,16 +60,43 @@ class App extends React.PureComponent {
   }
 
   render() {
+    const { compose } = require("recompose");
+    const {
+      withScriptjs,
+      withGoogleMap,
+      GoogleMap,
+      map, 
+      marker
+    } = require("react-google-maps");
+    const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
+    
+    const MapWithAMarkerWithLabel = compose(
+      withScriptjs,
+      withGoogleMap
+    )(props =>
+      <GoogleMap
+        defaultZoom={8}
+        defaultCenter={{ lat: this.state.lat, lng: this.state.lon }}
+      >
+        <MarkerWithLabel
+          position={{ lat: this.state.lat, lng: this.state.lon }}
+          labelAnchor={new google.maps.Point(0,0)}
+          labelStyle={{backgroundColor: "tranparent", fontSize: "32px", padding: "16px", color:"white"}}
+          >
+          <div></div>
+        </MarkerWithLabel>
+      </GoogleMap>
+    );
     return (
       
-        <div className="row">
+        <div className="row" style={{margin: '30px'}}>
 
-          <div className="col-sm-5 left-side">
+          <div className="col-sm-5 left-side" >
             <MapWithAMarkerWithLabel 
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `800px` }} />}
-              mapElement={<div style={{ height: `100%` }} />}
+              mapElement={<div style={{ height: `85%` }} />}
              />
           </div>
           
@@ -185,12 +183,14 @@ class App extends React.PureComponent {
                     <td>{this.state.metro_code}</td>
                   </tr> */}
                 </tbody> 
-              </table> 
+              </table>
+
+              <div className="button-layout">
+                <button type="button" class="btn btn-submit" onClick={(e) => this.getInfo()}>SUBMIT</button>
+              </div>
             </div>
 
-            <div className="button-layout">
-              <button type="button" class="btn btn-submit" onClick={(e) => this.getInfo()}>SUBMIT</button>
-            </div>
+            
 
           </div>
         </div>
