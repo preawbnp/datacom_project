@@ -1,12 +1,43 @@
+/*global google*/
 import React, { Component } from 'react';
 import './stylesheets/App.css';
-import GoogleMapReact from 'google-map-react';
 
-class App extends Component {
+
+const { compose } = require("recompose");
+const {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  map, 
+  marker
+} = require("react-google-maps");
+const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
+
+const MapWithAMarkerWithLabel = compose(
+  withScriptjs,
+  withGoogleMap
+)(props =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: 13.7563, lng: 100.5018 }
+  }
+  >
+    <MarkerWithLabel
+      position={{ lat: 13.7563, lng: 100.5018 }}
+      labelAnchor={new google.maps.Point(0,0)}
+      labelStyle={{backgroundColor: "black", fontSize: "32px", padding: "16px", color:"white"}}
+    >
+      <div>Beautiful amp</div>
+    </MarkerWithLabel>
+  </GoogleMap>
+);
+
+
+class App extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      ip_number: ''
+      ip_number: '',isMarkerShown: false
     }
   }
   
@@ -14,17 +45,36 @@ class App extends Component {
     center: {lat: 13.7563, lng: 100.5018},
     zoom: 13
   };
+  componentDidMount() {
+    this.delayedShowMarker()
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true })
+    }, 3000)
+  }
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
+  }
 
   render() {
     return (
+      
         <div className="row">
 
           <div className="col-sm-5 left-side">
-            <GoogleMapReact
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-            >
-            </GoogleMapReact>
+            
+            <MapWithAMarkerWithLabel
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `800px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                    />
+
+          
           </div>
           
           <div className="col-sm-7 right-side">
@@ -91,7 +141,7 @@ class App extends Component {
             </div>
 
             <div className="button-layout">
-              <button type="button" class="btn btn-submit">SUBMIT</button>
+              <button type="button" className="btn btn-submit">SUBMIT</button>
             </div>
 
           </div>
@@ -101,4 +151,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
