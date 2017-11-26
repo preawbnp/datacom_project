@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
-import home from './h-mock.png'
+import home from './main_home.png'
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -90,6 +90,12 @@ class App extends React.PureComponent {
     );
     return (
       <div >
+       {/* <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            hello
+          </div>
+        </nav> */}
+      
         <div className="bg-home">
           <img src={home} alt="home" className="home" />
         </div>
@@ -194,8 +200,6 @@ class App extends React.PureComponent {
                 <button type="button" class="btn btn-submit" onClick={(e) => this.getInfo()}>SUBMIT</button>
               </div>
             </div>
-
-            
 
           </div>
         </div>
