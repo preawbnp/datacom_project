@@ -109,7 +109,13 @@ body, html {
   height: 40px;
   color: white;
   font-family: 'Open Sans', sans-serif;     
-  background-color: #D9524F;
+  background-color: #f32a58;
+}
+.btn-submit:hover {
+  color: #f32a58 !important;
+  font-family: 'Open Sans', sans-serif;     
+  background-color: transparent;
+  border: 2.3px solid #f32a58;
 }
 
 .home {
