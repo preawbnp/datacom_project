@@ -9,6 +9,8 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
+      own_ip: '',
+      input_data: '',
       ip_number: '',
       isMarkerShown: false,
       data: []
@@ -35,22 +37,41 @@ class App extends React.PureComponent {
   }
 
   getInfo() {
-    console.log('hello')
-    axios.get('http://ip-api.com/json/' + this.state.ip_number, )
+    console.log('getting ip')
+    axios.get('https://freegeoip.net/json/' + this.state.input_data)
     .then((res) => {
-      this.setState(res.data)
-      console.log('success')
-      console.log(res.data)
+      console.log('ip = ' + res.data.ip)
+      this.setState({ip_number: res.data.ip})
+      axios.get('http://ip-api.com/json/' + res.data.ip, )
+      .then((res) => {
+        this.setState(res.data)
+        console.log('success')
+        console.log(res.data)
+      })
+      .catch((res) => {
+        console.log('error with getting data')
+      })
     })
     .catch((res) => {
-      console.log('error with getting data')
+      console.log('error getting ip')
     })
+
+    // console.log('getting info')
+    // axios.get('http://ip-api.com/json/' + this.state.ip_number, )
+    // .then((res) => {
+    //   this.setState(res.data)
+    //   console.log('success')
+    //   console.log(res.data)
+    // })
+    // .catch((res) => {
+    //   console.log('error with getting data')
+    // })
   }
 
   componentWillMount(e) {
     axios.get('http://ip-api.com/json?callback=')
     .then((res) => {
-      this.setState({ip_number: res.data.query})
+      this.setState({own_ip: res.data.query, ip_number: res.data.query})
       this.setState(res.data)
       console.log('first success')
       console.log(res.data)
@@ -114,14 +135,14 @@ class App extends React.PureComponent {
           <div className="col-sm-7 right-side"> 
             <div className="content-layout">
               <span>YOUR IP ADDRESS</span><br/>
-              <span><h3>{this.state.ip_number}</h3></span>
+              <span><h3>{this.state.own_ip}</h3></span>
             </div>
 
             <div className="ip-layout">
               <div className="search-container">
                 <div className="search-box">
                   <div className="search-icon"><i className="fa fa-search"></i></div>
-                  <input className="search-input" id="search" type="text" placeholder="Search IP Address ..." onChange={(e) => this.setState({ip_number: e.target.value})}/>
+                  <input className="search-input" id="search" type="text" placeholder="Search IP Address ..." onChange={(e) => this.setState({input_data: e.target.value})}/>
                 </div>
               </div>
             </div>
@@ -129,6 +150,10 @@ class App extends React.PureComponent {
             <div className="table-layout">
               <table className="table thead-default" align="center">
                 <tbody>
+                  <tr>
+                    <td>IP</td>                      
+                    <td>{this.state.ip_number}</td>                    
+                  </tr>
                   <tr>
                     <td>Country</td>                      
                     <td>{this.state.country}</td>                    
