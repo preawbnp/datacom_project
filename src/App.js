@@ -4,6 +4,7 @@ import './stylesheets/App.css';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import home from './main_home.png'
+import swal from 'sweetalert'
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -50,10 +51,18 @@ class App extends React.PureComponent {
       })
       .catch((res) => {
         console.log('error with getting data')
+        swal({
+          title: "Please try again!",
+          icon: "error",
+        });
       })
     })
     .catch((res) => {
       console.log('error getting ip')
+      swal({
+        title: "Please try again!",
+        icon: "error",
+      });
     })
 
     // console.log('getting info')
