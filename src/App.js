@@ -52,7 +52,7 @@ class App extends React.PureComponent {
       .catch((res) => {
         console.log('error with getting data')
         swal({
-          title: "Please try again!",
+          title: "Not Found!",
           icon: "error",
         });
       })
@@ -60,7 +60,7 @@ class App extends React.PureComponent {
     .catch((res) => {
       console.log('error getting ip')
       swal({
-        title: "Please try again!",
+        title: "Not Found!",
         icon: "error",
       });
     })
